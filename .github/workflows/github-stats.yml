@@ -12,9 +12,11 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
@@ -34,6 +36,15 @@ jobs:
           python generate_images.py
           cp generated/overview.svg generated/languages.svg ../
           cd ..
+          rm -rf stats-builder
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "Update GitHub Stats SVGs"
+          git push
           rm -rf stats-builder
 
       - name: Commit and Push
