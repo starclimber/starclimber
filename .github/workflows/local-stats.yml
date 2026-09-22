@@ -20,6 +20,7 @@ jobs:
           image-file: images/overview.svg
           colors: dark
           custom-title: starclimber 的 GitHub 总览
+          hide-keys: languages,most-forked,most-starred,watching
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -34,6 +35,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Commit SVGs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "Update local stats SVGs"
+          git push
       - name: Commit SVGs
         run: |
           git config user.name "github-actions[bot]"
