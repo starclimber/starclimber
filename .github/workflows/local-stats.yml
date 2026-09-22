@@ -1,0 +1,43 @@
+name: Local GitHub Stats
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate overview
+        uses: cicirello/user-statistician@v1
+        with:
+          image-file: images/overview.svg
+          colors: dark
+          custom-title: starclimber 的 GitHub 总览
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate languages
+        uses: cicirello/user-statistician@v1
+        with:
+          image-file: images/languages.svg
+          colors: dark
+          hide-keys: general,contributions,repositories
+          max-languages: 8
+          animated-language-chart: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit SVGs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "Update local stats SVGs"
+          git push
