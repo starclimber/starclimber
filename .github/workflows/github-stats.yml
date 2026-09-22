@@ -45,39 +45,3 @@ jobs:
           git add -A
           git diff-index --quiet HEAD || git commit -m "Update GitHub Stats SVGs"
           git push
-          cp generated/overview.svg generated/languages.svg ../
-          cd ..
-          rm -rf stats-builder
-
-      - name: Commit and Push
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff-index --quiet HEAD || git commit -m "Update GitHub Stats SVGs"
-          git push
-          rm -rf stats-builder
-
-      - name: Commit and Push
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff-index --quiet HEAD || git commit -m "Update GitHub Stats SVGs"
-          git push
-          COUNT_STATS_FROM_FORKS: ""
-        run: |
-          cd stats-builder
-          python generate_images.py
-          cp generated/overview.svg generated/languages.svg ../
-          cd ..
-          rm -rf stats-builder
-
-      - name: Commit and Push
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase --autostash
-          git add -A
-          git diff-index --quiet HEAD || git commit -m "Update GitHub Stats SVGs"
-          git push
