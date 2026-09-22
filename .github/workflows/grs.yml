@@ -37,6 +37,3 @@ jobs:
           git add -A
           git diff-index --quiet HEAD || git commit -m "Update GRS cards"
           git push
-          git add -A
-          git diff-index --quiet HEAD || git commit -m "Update GRS cards"
-          git push
