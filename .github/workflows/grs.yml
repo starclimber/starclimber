@@ -1,0 +1,39 @@
+name: GRS Cards
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  grs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Overview card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: stats
+          options: "username=starclimber&show_icons=true&hide_border=true&theme=transparent&bg_color=0D1117&title_color=FFB3B2&icon_color=FFB3B2&text_color=C9D1D9"
+          path: images/overview.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Languages card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: top-langs
+          options: "username=starclimber&layout=compact&hide_border=true&theme=transparent&bg_color=0D1117&title_color=FFB3B2&text_color=C9D1D9&langs_count=8"
+          path: images/languages.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit SVGs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "Update GRS cards"
+          git push
