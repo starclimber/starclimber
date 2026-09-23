@@ -18,7 +18,7 @@
   - Android(AI) ████████████████████████
 
 AI 能力:
-  - AI 提示词工程 █████████████████████████
+  - AI 提示词工程 ████████████████████████
 ```
 
 # 我喜欢做点新东西！
@@ -39,6 +39,7 @@ AI 能力:
 - ✨ 我喜欢的前端设计是暗色极简玻璃风
 - 📺 好看的视频，欢迎观看，见：[视频](https://cdn.v6.ccwu.cc/666.mp4)
 - 💻 欢迎邮件联系我：无
+- 注：标注AI即为AI辅助做成的作品
 
 # 贪吃蛇
 ![snake](https://raw.githubusercontent.com/starclimber/starclimber/output/github-contribution-grid-snake.svg)
