@@ -35,8 +35,9 @@ AI 能力:
 - 🧠 我的特殊能力：AI 提示词工程，能写出高质量的提示词
 - 💻 后端与安卓代码大多由 AI 生成，我负责把关和优化
 - 📖 了解我做的更多东西，见我的：[个人主页](https://starclimber.my-board.org)
+- 📃 我的blog：[blog](https://starblog.totalh.net/wp59/)
 - ✨ 我喜欢的前端设计是暗色极简玻璃风
-- 💻 欢迎邮件联系我：你的邮箱
+- 💻 欢迎邮件联系我：无
 
 # 贪吃蛇
 ![snake](https://raw.githubusercontent.com/starclimber/starclimber/output/github-contribution-grid-snake.svg)
